@@ -1,97 +1,835 @@
+/* ========================================
+   RESET & GLOBAL STYLES
+   ======================================== */
 * {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #2f5d50;
+    --primary-dark: #1f3d35;
+    --secondary: #4a9fbf;
+    --bg-cream: #faf9f7;
+    --bg-light: #f4f3f0;
+    --text-dark: #1a2e29;
+    --text-body: #4a5568;
+    --border: #e2e1dd;
+    --white: #ffffff;
+    --success: #38a169;
+    --warning: #d69e2e;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-background: #f9f9f9;
-color: #222;
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+    color: var(--text-dark);
+    background: var(--bg-cream);
+    line-height: 1.7;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* ========================================
+   UTILITIES
+   ======================================== */
 .container {
-max-width: 1100px;
-margin: auto;
-padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
 
-header {
-background: #2f5d50;
-padding: 15px;
+.container-narrow {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
 
-.logo {
-color: white;
-font-weight: bold;
-text-decoration: none;
-font-size: 24px;
+.section {
+    padding: 6rem 0;
 }
 
-.nav-menu {
-list-style: none;
-display: flex;
-gap: 20px;
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
 }
 
-.nav-menu a {
-color: white;
-text-decoration: none;
+.section-subtitle {
+    text-align: center;
+    font-size: 1.15rem;
+    color: var(--text-body);
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    line-height: 1.7;
 }
 
-.hero {
-background: linear-gradient(#2f5d50, #4a9fbf);
-color: white;
-padding: 100px 20px;
-text-align: center;
-}
-
+/* ========================================
+   BUTTONS
+   ======================================== */
 .btn {
-display: inline-block;
-padding: 12px 25px;
-margin-top: 20px;
-border-radius: 6px;
-text-decoration: none;
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+    font-family: inherit;
 }
 
 .btn-primary {
-background: white;
-color: #2f5d50;
-font-weight: bold;
+    background: var(--primary);
+    color: white;
 }
 
-.benefits {
-margin: 80px auto;
-text-align: center;
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(47, 93, 80, 0.25);
 }
 
-.grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-gap: 20px;
+.btn-secondary {
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
 }
 
-.card {
-background: white;
-padding: 25px;
-border-radius: 8px;
-box-shadow: 0 0 10px rgba(0,0,0,.1);
+.btn-secondary:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
 }
 
-.page {
-margin: 80px auto;
+.btn-large {
+    padding: 1.2rem 3rem;
+    font-size: 1.1rem;
 }
 
+.btn-checkout {
+    width: 100%;
+    padding: 1.3rem 3rem;
+    font-size: 1.2rem;
+}
+
+/* ========================================
+   HEADER & NAVIGATION
+   ======================================== */
+header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: 1px;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+}
+
+.nav-menu a {
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: color 0.3s;
+    font-size: 1rem;
+}
+
+.nav-menu a:hover {
+    color: var(--primary);
+}
+
+.mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-dark);
+}
+
+/* ========================================
+   HERO SECTION
+   ======================================== */
+.hero {
+    background: linear-gradient(135deg, #e8f5f0 0%, var(--white) 100%);
+    padding: 8rem 2rem 6rem;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    color: var(--text-dark);
+}
+
+.hero .highlight {
+    color: var(--primary);
+}
+
+.hero p {
+    font-size: 1.3rem;
+    color: var(--text-body);
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+}
+
+.hero-ctas {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ========================================
+   FEATURES / BENEFITS
+   ======================================== */
+.features {
+    background: var(--white);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.feature-card {
+    background: var(--bg-cream);
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    border-color: var(--primary);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+    color: var(--text-dark);
+}
+
+.feature-card p {
+    color: var(--text-body);
+    line-height: 1.7;
+}
+
+/* ========================================
+   VALUES
+   ======================================== */
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.value-card {
+    background: var(--white);
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.value-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    border-color: var(--primary);
+}
+
+.value-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.value-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+    color: var(--text-dark);
+}
+
+.value-card p {
+    color: var(--text-body);
+    line-height: 1.6;
+}
+
+/* ========================================
+   TESTIMONIALS
+   ======================================== */
+.testimonials {
+    background: var(--bg-light);
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.testimonial-card {
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+.testimonial-text {
+    font-style: italic;
+    color: var(--text-body);
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+.testimonial-author {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+/* ========================================
+   CTA SECTION
+   ======================================== */
+.cta-section {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    text-align: center;
+    padding: 5rem 2rem;
+}
+
+.cta-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.cta-section p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+}
+
+.cta-section .btn {
+    background: white;
+    color: var(--primary);
+}
+
+.cta-section .btn:hover {
+    background: var(--bg-cream);
+}
+
+/* ========================================
+   PRODUCT PAGE
+   ======================================== */
+.product-hero {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    text-align: center;
+    padding: 6rem 2rem 5rem;
+}
+
+.product-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.product-hero p {
+    font-size: 1.3rem;
+    opacity: 0.95;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.product-section {
+    padding: 5rem 0;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    align-items: start;
+    margin-bottom: 4rem;
+}
+
+.ebook-cover {
+    position: sticky;
+    top: 100px;
+}
+
+.ebook-visual {
+    width: 100%;
+    max-width: 320px;
+    height: 420px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3rem 2.5rem;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.ebook-visual::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.1) 0%, transparent 60%);
+}
+
+.ebook-brand {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.ebook-title {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    text-align: center;
+    font-weight: 400;
+    position: relative;
+    z-index: 1;
+}
+
+.ebook-footer {
+    font-size: 0.9rem;
+    text-align: center;
+    opacity: 0.9;
+    position: relative;
+    z-index: 1;
+}
+
+.product-info h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.product-description {
+    font-size: 1.15rem;
+    color: var(--text-body);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.product-info h3 {
+    font-size: 1.4rem;
+    margin: 2rem 0 1rem;
+    color: var(--text-dark);
+}
+
+.product-features {
+    list-style: none;
+    margin-bottom: 2rem;
+}
+
+.product-features li {
+    padding: 0.8rem 0;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    border-bottom: 1px solid var(--border);
+}
+
+.product-features li:last-child {
+    border-bottom: none;
+}
+
+/* ========================================
+   BONUS SECTION
+   ======================================== */
+.bonus-section {
+    background: var(--bg-light);
+    padding: 3rem;
+    border-radius: 12px;
+    margin: 4rem 0;
+}
+
+.bonus-section h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: var(--text-dark);
+}
+
+.bonus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.bonus-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+}
+
+.bonus-card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    color: var(--text-dark);
+}
+
+.bonus-card p {
+    color: var(--text-body);
+    line-height: 1.6;
+}
+
+/* ========================================
+   PRICE BOX
+   ======================================== */
+.price-box {
+    background: var(--white);
+    border: 2px solid var(--primary);
+    padding: 3rem;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 500px;
+    margin: 4rem auto;
+}
+
+.price-box h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: var(--text-body);
+    font-size: 1.3rem;
+}
+
+.new-price {
+    font-size: 4rem;
+    color: var(--primary);
+    font-weight: 800;
+    margin: 1rem 0;
+    line-height: 1;
+}
+
+.price-features {
+    list-style: none;
+    margin: 2rem 0;
+}
+
+.price-features li {
+    padding: 0.5rem 0;
+    color: var(--text-body);
+    font-size: 1.05rem;
+}
+
+.payment-info {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-body);
+}
+
+/* ========================================
+   CONTENT PAGES (Sobre, Valores)
+   ======================================== */
+.page-header {
+    background: linear-gradient(135deg, #e8f5f0 0%, var(--white) 100%);
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.page-header p {
+    font-size: 1.2rem;
+    color: var(--text-body);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.content-section {
+    padding: 5rem 0;
+}
+
+.content-block {
+    margin-bottom: 3rem;
+}
+
+.content-block h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.content-block p {
+    font-size: 1.1rem;
+    color: var(--text-body);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.lead {
+    font-size: 1.25rem !important;
+    font-weight: 500;
+    color: var(--text-dark) !important;
+}
+
+.cta-box {
+    background: var(--bg-light);
+    padding: 3rem;
+    border-radius: 12px;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.cta-box h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.cta-box p {
+    font-size: 1.1rem;
+    color: var(--text-body);
+    margin-bottom: 2rem;
+}
+
+/* ========================================
+   VALOR PAGES
+   ======================================== */
+.valor-header {
+    position: relative;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: var(--primary);
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.back-link:hover {
+    transform: translateX(-5px);
+}
+
+.valor-header .valor-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.valores-nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 4rem;
+}
+
+.valor-nav-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.valor-nav-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-color: var(--primary);
+}
+
+.valor-nav-card span {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 0.8rem;
+}
+
+.valor-nav-card strong {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
 footer {
-background: #222;
-color: white;
-padding: 20px;
-text-align: center;
-margin-top: 80px;
+    background: var(--text-dark);
+    color: white;
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+footer .logo {
+    color: white;
+    margin-bottom: 1rem;
+}
+
+footer p {
+    opacity: 0.9;
+}
+
+.disclaimer {
+    background: var(--bg-light);
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--text-body);
+    line-height: 1.7;
+    border-top: 1px solid var(--border);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 992px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .ebook-cover {
+        position: static;
+    }
 }
 
 @media (max-width: 768px) {
-.nav-menu {
-flex-direction: column;
-}
+    body {
+        font-size: 16px;
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background: var(--white);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0,0,0,0.05);
+        padding: 2rem 0;
+        gap: 1.5rem;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .mobile-toggle {
+        display: block;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .product-hero h1 {
+        font-size: 2rem;
+    }
+
+    .page-header h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-ctas {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .section {
+        padding: 4rem 0;
+    }
+
+    .new-price {
+        font-size: 3rem;
+    }
+
+    .features-grid,
+    .testimonials-grid,
+    .bonus-grid {
+        grid-template-columns: 1fr;
+    }
 }
