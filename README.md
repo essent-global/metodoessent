@@ -92,15 +92,6 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 ---
 
-## 📧 Contato
-
-**ESSENT** - Transformando vidas através da saúde e bem-estar
-
-- 🌐 Site: [essent.com.br](https://essent.com.br)
-- 📧 Email: contato@essent.com.br
-- 📱 WhatsApp: +55 (XX) XXXXX-XXXX
-
----
 
 **Desenvolvido com 💚 pela equipe ESSENT**
 ```
@@ -147,7 +138,6 @@ User-agent: MJ12bot
 Disallow: /
 
 # Sitemap
-Sitemap: https://essent.com.br/sitemap.xml
-
+Sitemap: https://andrehhx77.github.io/metodoessent/
 # Rate limit
 Crawl-delay: 10
