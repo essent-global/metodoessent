@@ -8,7 +8,7 @@
 
 Site institucional e de vendas da **ESSENT** - Método essencial para transformar saúde e corpo com equilíbrio, ciência e constância.
 
-**🔗 Acesse:** [essent.com.br](https://essent.com.br)
+**🔗 Acesse:** [metodoessent](https://andrehhx77.github.io/metodoessent/)
 
 ---
 
