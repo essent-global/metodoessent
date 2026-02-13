@@ -138,6 +138,6 @@ User-agent: MJ12bot
 Disallow: /
 
 # Sitemap
-Sitemap: https://andrehhx77.github.io/metodoessent/
+Sitemap: https://essent-global.github.io/metodoessent/
 # Rate limit
 Crawl-delay: 10
